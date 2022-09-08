@@ -1,0 +1,142 @@
+//******************************************************************************
+//                      DUT Setup file
+//******************************************************************************
+
+WT_XTAL_DEFAULT_VALUE			= 63			//频偏寄存器校准默认值
+
+WT_DUT_FREQ_REG_RANGE			1	127		//频偏寄存器的取值范围
+
+WT_SINGLE_TONE_TX_POWER_LEVEL   = 0x70			//单载波tx功率等级
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+// Dut connection settings
+//
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+WT_DUT_CONN_TYPE			= COM	  		//DUT连接方式
+
+WT_DUT_CONN_PORT_1			= 4			//串口号
+WT_DUT_CONN_PORT_2			= 2
+WT_DUT_CONN_PORT_3			= 3
+WT_DUT_CONN_PORT_4			= 4
+WT_DUT_CONN_PORT_5			= 5			
+WT_DUT_CONN_PORT_6			= 6
+WT_DUT_CONN_PORT_7			= 7
+WT_DUT_CONN_PORT_8			= 8
+
+WT_COM_BAUD				= 115200			//波特率
+WT_COM_RX_FRAM_GAP			= 50			//接受帧间隙
+WT_COM_BYTE_INTER                       = 0			//两次发送的间隔设置
+WT_COM_RTS_ENABLE			= 0			//RTS设置
+
+//WT_DUT_LOGIN_NAME			= admin			//用户名
+//WT_DUT_LOGIN_PWD			= admin			//密码
+
+WT_COMMUNICATE_TIMEOUT			= 5			//通讯超时时间，sec,默认5s
+
+WT_MULTI_CMD_ENABLE			= 1			//DUT 指令发送方式
+								//0:单条发送
+								//1:多条指令一起发送
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//执行初始化命令
+WT_DUT_INIT_START
+//格式：[cmd] [ack] [timeout]
+WT_DUT_INIT_END
+//------------------------------------------------------------------------------
+
+//TX、RX重试时下发指令集
+WT_DUT_Retry_COMMAND_START
+//格式：cmd
+WT_DUT_Retry_COMMAND_END
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+// Dut Attribute setting
+//
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+WT_DUT_BAND_2G				= 1			//DUT是否支持2.4G
+WT_DUT_BAND_5G				= 0			//DUT是否支持5.8G
+WT_DUT_HAS_11AC				= 0			//DUT是否支持11AC
+		
+WT_DUT_ANT_2G				= 1			//DUT 2.4G天线数目
+WT_DUT_ANT_5G				= 0			//DUT 5G天线数目
+		
+WT_DUT_IF_2G				= 			//DUT 2G 网络名称
+WT_DUT_IF_5G				= 			//DUT 5G 网络名称 
+		
+WT_DUT_ACK_TOKEN			= 			//DUT回应字符,默认空
+WT_DUT_COMMAND_END                      = 			//默认\n
+
+							
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+// Platform settings
+//
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+WT_AUTO_TEST_WHEN_DUT_READY 		= 0   			// 抓卡后自动开始测试，重启软件后生效
+								//0:手动(默认值)
+								//1:自动
+
+WT_START_TEST_WHEN_POPUP_OK		= 0			//在启用了自动抓卡测试，弹窗后自动开始测试，不需要等待DUT READY
+  								// 0：需要DUT READY(默认值)
+								// 1：不需要DUT READY
+
+WT_IS_NEED_LINKMES			= 0			//是否连接MES
+								//0：不连接(默认值)
+								//1: 连接
+//WT_MES_LIB_NAME			= WT_MES.dll
+
+WT_PASS_LOG_NAME_FORMAT			= 1			//测试PASS时LOG命名方式,取值范围(0-100)
+								//0: 日期时间+PASS
+								//1: MAC+日期时间+PASS(默认值)
+								//2: SN+日期时间+PASS
+
+WT_FAIL_LOG_NAME_FORMAT			= 0			//MAC从配置文件读取时FAIL时LOG命名方式,取值范围(0-100)
+								//0: 日期时间+FAIL(默认值)
+								//1: @@@@@@@@@@@@+日期时间+FAIL	
+								//2: MAC+日期时间+FAIL 
+								//3: SN+日期时间+FAIL
+									
+WT_TEST_LOG_PATH =                                              //指定Log输出的路径。默认为空时，输出到Log文件夹中
+WT_IS_SHOW_EXTERNAL_PROGRAM_WINDOW 	= 0                     //是否显示外部应用的窗口  0： 不显示, 1: 显示    
+WT_IS_CHECK_CAL_START_AND_END      	= 1                     //写值前，检查是否执行 WT_CAL_START/WT_CAL_END，  0：不检查， 1检查                                                          
+
+//------------------------------------------------------------------------------
+// Log生成
+//------------------------------------------------------------------------------
+WT_MAC_LOG_ENABLE		= 1		// 生成 Mac Log(每个DUT独立一个Log)
+						// 1:生成(默认值)
+						// 0:不生成
+						
+WT_TOTAL_LOG_ENABLE		= 1		// 生成 Total Log
+						// 1:生成(默认值)
+						// 0:不生成
+						
+WT_CSV_LOG_ENABLE		= 1		// 生成 CSV Log
+						// 1:生成(默认值)
+						// 0:不生成
+						
+WT_CSV_LOG_LIB_NAME		= WT_CSV_LOG.dll
+                                                
+                                                
+//------------------------------------------------------------------------------
+// 统计设置
+//------------------------------------------------------------------------------
+WT_SAVE_TEST_STATISTIC		= 1		// 软件关闭时保存PASS/FAIL统计数据
+						// 1:保存(默认值)
+						// 0:不保存
+
+WT_TEST_CLEAR_FAIL		= 0		// 软件关闭时清除FAIL统计数据
+						// 1:清除
+						// 0:不清除(默认值)
+
+//******************************************************************************
+//                      DUT Setup file end
+//******************************************************************************
+	
