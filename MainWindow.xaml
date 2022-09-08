@@ -1,0 +1,83 @@
+﻿<Window x:Class="FacilityCableTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FacilityCableTool"
+        mc:Ignorable="d"
+        Title="Facility Cableloss Tool" Height="420" Width="800" Closing="Closed_AskIfSave">
+    <Window.Resources>
+        <ContextMenu x:Key="ContextMenu">
+            <MenuItem Name="Clear" Header="全屏"/>
+            <Separator></Separator>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl" Grid.Row="0">
+            <TabItem Header="2.4 GHz">
+                <DataGrid x:Name="dataGrid_2G" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="True" ColumnWidth="*"   CanUserAddRows="False" CanUserSortColumns="False"/>
+            </TabItem>
+            <TabItem Header="5 GHz">
+                <DataGrid x:Name="dataGrid_5G" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="True" ColumnWidth="*" CanUserAddRows="False" CanUserSortColumns="False"/>
+            </TabItem>
+            <TabItem Header="6 GHz">
+                <DataGrid x:Name="dataGrid_6G" Margin="0,0,0,0"  RenderTransformOrigin="0.5,0.5" AutoGenerateColumns="True" ColumnWidth="*" CanUserAddRows="False" CanUserSortColumns="False">
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+        <!--<Grid>-->
+
+        <!--<Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="224" />
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>-->
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--<DockPanel LastChildFill="False" Grid.Column="0" Width="300">-->
+            <ScrollViewer Name="scroll" Grid.Column="3" CanContentScroll="True">
+
+                <ListBox x:Name="infolist"  Width="320" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <!--</DockPanel>-->
+            </ScrollViewer>
+
+            <StackPanel Orientation="Vertical" Grid.Column="5" VerticalAlignment="Center">
+                <!--<Button x:Name="Decrease" Content="decrease" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="85" Height="35"/>-->
+                <Button x:Name="Add" Content="Add" Click="Add_Clicked"  Margin="10"  Width="170" Height="40" FontWeight="Bold"/>
+                <Button x:Name="Del" Content="Del" Click="Del_Clicked"   Width="170" Height="40" FontWeight="Bold"/>
+                <Button x:Name="Import" Content="Import" Click="Import_Clicked" Margin="10" Width="170" Height="40" FontWeight="Bold"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" >
+                <TextBlock Name="porttext" Text="Port:" TextAlignment="Left" FontSize="30" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                <TextBlock Name="textimport2G" Text="2G:NoImport" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF11E4E" Margin="5" HorizontalAlignment="Left"/>
+                <TextBlock Name="textimport5G" Text="5G:NoImport" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF11E4E" Margin="5"/>
+                <TextBlock Name="textimport6G" Text="6G:NoImport" TextAlignment="Left" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#FFF11E4E" Margin="5"/>
+            </StackPanel>
+
+        </Grid>
+
+
+        <!--<Button x:Name="Add" Content="Add" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="85" Height="35" Click="Add_Clicked"/>
+                <Button x:Name="Decrease" Content="decrease" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="85" Height="35"/>-->
+        <!--</Grid>-->
+        <!--</Grid>-->
+    </Grid>
+
+
+</Window>
